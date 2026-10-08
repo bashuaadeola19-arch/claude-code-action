@@ -37,6 +37,30 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <footer className="border-t border-black/5 bg-[#f8f7f4] px-5 py-4 text-center text-[11px] text-black/45">
+          <p>
+            Icons by{' '}
+            <a className="underline underline-offset-2 transition-colors hover:text-black/70" href="https://www.flaticon.com/authors/hidemaru" target="_blank" rel="noreferrer">
+              HideMaru
+            </a>
+            ,{' '}
+            <a className="underline underline-offset-2 transition-colors hover:text-black/70" href="https://www.flaticon.com/authors/flat-icons" target="_blank" rel="noreferrer">
+              Flat Icons
+            </a>
+            ,{' '}
+            <a className="underline underline-offset-2 transition-colors hover:text-black/70" href="https://www.flaticon.com/authors/magnific" target="_blank" rel="noreferrer">
+              Magnific
+            </a>
+            {' '}and{' '}
+            <a className="underline underline-offset-2 transition-colors hover:text-black/70" href="https://www.flaticon.com/authors/those-icons" target="_blank" rel="noreferrer">
+              Those Icons
+            </a>
+            {' '}from{' '}
+            <a className="underline underline-offset-2 transition-colors hover:text-black/70" href="https://www.flaticon.com/" target="_blank" rel="noreferrer">
+              Flaticon
+            </a>
+          </p>
+        </footer>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

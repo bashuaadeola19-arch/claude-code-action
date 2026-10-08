@@ -153,6 +153,29 @@
   }
 }
 
+.shoplink-brand-mark {
+  animation: shoplink-float 4s ease-in-out infinite, shoplink-glow 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.shoplink-brand-mark:hover {
+  animation-duration: 1.2s, 1.2s;
+}
+
+@keyframes shoplink-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+@keyframes shoplink-glow {
+  0%, 100% { filter: drop-shadow(0 2px 3px rgb(23 75 56 / 0.12)); }
+  50% { filter: drop-shadow(0 5px 10px rgb(23 75 56 / 0.3)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shoplink-brand-mark { animation: none; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

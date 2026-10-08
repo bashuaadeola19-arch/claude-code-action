@@ -7,8 +7,16 @@ export const metadata: Metadata = {
   description: 'Create a professional online storefront and let customers order your products directly through WhatsApp.',
   generator: 'v0.app',
   icons: {
-    icon: '/shoplink-icon.png',
-    apple: '/shoplink-icon.png',
+    icon: [
+      { url: '/shoplink-icon-luxury-emerald.png', type: 'image/png' },
+      { url: '/shoplink-icon-luxury-onyx.png', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/shoplink-icon-luxury-cream.png', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/shoplink-icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/shoplink-icon-luxury-cream.png', type: 'image/png' },
+      { url: '/shoplink-icon-luxury-emerald.png', type: 'image/png' },
+    ],
   },
 }
 

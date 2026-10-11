@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { ExternalLink, ImagePlus, LayoutDashboard, Loader2, LogOut, Package, Settings, Store, UploadCloud } from 'lucide-react'
+import { Copy, ExternalLink, ImagePlus, LayoutDashboard, Loader2, LogOut, Package, Settings, Store, UploadCloud } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { authClient } from '@/lib/neon-auth'
 
@@ -61,6 +61,7 @@ export default function DashboardPage() {
             <div className="mt-5 grid gap-3 rounded-2xl border border-dashed border-[#2d8b63]/35 bg-[#f4faf5] p-4 sm:grid-cols-[auto_1fr_auto] sm:items-center"><div className="grid size-16 place-items-center overflow-hidden rounded-xl bg-white">{uploadedImage ? <img src={uploadedImage} alt="Uploaded product" className="size-full object-cover" /> : uploading ? <Loader2 className="animate-spin text-[#174b38]" /> : <UploadCloud className="text-[#2d8b63]" />}</div><div><p className="text-sm font-semibold">{uploading ? 'Uploading your image...' : uploadedImage ? 'Photo uploaded successfully' : 'Upload a product image'}</p><p className="mt-1 text-xs text-black/50">JPG, PNG or WebP · max 5MB</p>{uploadError && <p className="mt-1 text-xs font-medium text-red-600">{uploadError}</p>}</div><button onClick={() => fileInputRef.current?.click()} disabled={uploading} className="h-9 rounded-full border border-black/10 bg-white px-4 text-sm font-medium hover:bg-black/[.03] disabled:opacity-50">Choose image</button></div>
             <div className="mt-6 grid gap-3">{products.map((product) => <div key={product.name} className="flex items-center gap-3 rounded-2xl border border-black/6 p-3"><img src={product.image} alt="" className="size-14 rounded-xl object-cover" /><div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold">{product.name}</p><p className="mt-1 text-sm text-black/50">{product.price}</p></div><span className="rounded-full bg-[#e5f2e9] px-3 py-1 text-xs font-semibold text-[#174b38]">{product.status}</span></div>)}</div>
           </section>
+          <section id="upgrade" className="mt-8 rounded-3xl border border-[#d8b46a]/45 bg-[#fffaf0] p-5 sm:p-7"><div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"><div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a6b18]">Manual upgrade</p><h2 className="mt-2 text-xl font-semibold">Upgrade your ShopLink plan</h2><p className="mt-1 max-w-xl text-sm text-black/55">Pay manually using the account below, then send your payment receipt to support for confirmation. Your plan is not upgraded until payment is verified.</p></div><span className="rounded-full bg-[#f4e4b6] px-3 py-1 text-xs font-semibold text-[#76500e]">Coming soon</span></div><div className="mt-5 grid gap-3 sm:grid-cols-3"><PaymentDetail label="Bank" value="PAGA BANK" /><PaymentDetail label="Account name" value="ABIMBOLA OMOLEWA OMOTAYO" /><PaymentDetail label="Account number" value="0656194809" /></div><div className="mt-5 rounded-2xl border border-[#ead9ad] bg-white/75 p-4 text-sm text-black/60"><p className="font-semibold text-[#76500e]">How to upgrade</p><ol className="mt-2 list-decimal space-y-1 pl-5"><li>Choose the plan you want on the pricing page.</li><li>Transfer the subscription amount to the account above.</li><li>Keep your receipt and contact ShopLink support for verification.</li></ol></div></section>
         </section>
       </div>
     </main>
@@ -68,3 +69,5 @@ export default function DashboardPage() {
 }
 
 function Stat({ label, value, detail }: { label: string; value: string; detail: string }) { return <div className="rounded-3xl border border-black/8 bg-white p-5"><p className="text-sm text-black/50">{label}</p><p className="mt-2 text-2xl font-semibold">{value}</p><p className="mt-1 text-xs text-[#2d8b63]">{detail}</p></div> }
+
+function PaymentDetail({ label, value }: { label: string; value: string }) { return <div className="rounded-2xl border border-[#ead9ad] bg-white p-4"><p className="text-xs font-medium text-black/45">{label}</p><div className="mt-2 flex items-center justify-between gap-2"><p className="text-sm font-semibold leading-tight">{value}</p><button type="button" aria-label={`Copy ${label}`} onClick={() => navigator.clipboard?.writeText(value)} className="grid size-8 shrink-0 place-items-center rounded-full border border-black/10 text-black/55 hover:bg-black/[.04]"><Copy size={14} /></button></div></div> }

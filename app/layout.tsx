@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <SpeedInsights />
         <footer className="border-t border-black/5 bg-[#f8f7f4] px-5 py-4 text-center text-[11px] text-black/45">
           <p>
             Icons by{' '}
